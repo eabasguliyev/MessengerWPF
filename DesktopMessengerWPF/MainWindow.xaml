@@ -1,0 +1,172 @@
+﻿<Window x:Class="DesktopMessengerWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DesktopMessengerWPF"
+        mc:Ignorable="d"
+        Title="Messenger" 
+        Height="600" 
+        Width="500"
+        MinHeight="600"
+        MinWidth="500"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="#FFFFFF"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0"
+              Background="#271C46">
+            <Border Grid.Column="0"
+                    x:Name="BorderTop"
+                    Background="Transparent"
+                    MouseDown="BorderTop_OnMouseDown">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Name="TextBlockWindowTitle"
+                               Grid.Column="0"
+                               Grid.ColumnSpan="2"
+                               Margin="10, 0, 0, 0"
+                               Text="Messenger"
+                               Foreground="White"
+                               FontSize="20"
+                               VerticalAlignment="Center"/>
+                    <Image Name="ImageClose"
+                           Grid.Column="6"
+                           Width="30"
+                           Height="30"
+                           Source="Images/close_window_50px.png"
+                           HorizontalAlignment="Right"
+                           Margin="0, 0, 10, 0"
+                           MouseDown="ImageClose_OnMouseDown"/>
+                </Grid>
+            </Border>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.2*"/>
+                <RowDefinition Height="9*"/>
+                <RowDefinition Height="1.4*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Ellipse Grid.Column="0"
+                         StrokeThickness="1"
+                         Height="50"
+                         Width="50"
+                         VerticalAlignment="Center">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="{Binding User.ProfilePhoto}"
+                                    Stretch="Fill"
+                                    RenderOptions.BitmapScalingMode="HighQuality"></ImageBrush>
+                    </Ellipse.Fill>
+                </Ellipse>
+
+                <Grid Grid.Column="1"
+                      Grid.ColumnSpan="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0"
+                               Text="{Binding User.Name}"
+                               VerticalAlignment="Bottom"
+                               Margin="5, 0 , 0 ,0"
+                               FontSize="17"
+                               FontFamily="Comic Sans Serif"
+                               FontWeight="SemiBold"/>
+
+                    <TextBlock Grid.Row="1"
+                               Text="{Binding User.About}"
+                               VerticalAlignment="Top"
+                               Margin="5, 0 , 0 ,0"
+                               FontFamily="Comic Sans Serif"
+                               Foreground="DarkGray"/>
+                </Grid>
+            </Grid>
+            <ListBox Name="ListBoxChat"
+                     Grid.Row="1"
+                     Background="#E5E5FF"
+                     BorderThickness="0">
+            </ListBox>
+
+            <Grid Grid.Row="2">
+                <Border BorderThickness="2"
+                        BorderBrush="#271C46"
+                        Margin="20, 5"
+                        CornerRadius="10">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="9*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBox Grid.Column="0"
+                                 x:Name="TextBoxMessage"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 Text="Write a message"
+                                 TextWrapping="Wrap"
+                                 AcceptsReturn="True"
+                                 Padding="5"
+                                 Foreground="DarkGray"
+                                 MouseEnter="TextBoxMessage_OnMouseEnter"
+                                 MouseLeave="TextBoxMessage_OnMouseLeave">
+                        </TextBox>
+
+                        <Image Grid.Column="1"
+                               Source="Images/attach_24px.png"
+                               Margin="10"
+                               RenderOptions.BitmapScalingMode="Fant"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center">
+                        </Image>
+                        <Image Grid.Column="2"
+                               Source="Images/happy_50px.png"
+                               Margin="10"
+                               RenderOptions.BitmapScalingMode="Fant"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center">
+                        </Image>
+                        <Image Name="ImageSend" 
+                            Grid.Column="3"
+                               Source="Images/send.png"
+                               Margin="10"
+                               RenderOptions.BitmapScalingMode="Fant"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               MouseUp="ImageSend_OnMouseUp">
+                        </Image>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
