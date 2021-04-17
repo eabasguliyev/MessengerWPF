@@ -98,9 +98,6 @@
     <Resource Include="Images\send.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\elon.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\send-light.png" />
   </ItemGroup>
   <ItemGroup>

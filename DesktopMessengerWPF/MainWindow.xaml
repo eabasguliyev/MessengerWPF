@@ -15,13 +15,17 @@
         Background="#FFFFFF"
         WindowStartupLocation="CenterScreen">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="91*"/>
+            <ColumnDefinition Width="159*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0"
-              Background="#271C46">
+              Background="#271C46" Grid.ColumnSpan="2">
             <Border Grid.Column="0"
                     x:Name="BorderTop"
                     Background="Transparent"
@@ -56,7 +60,7 @@
                 </Grid>
             </Border>
         </Grid>
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1.2*"/>
                 <RowDefinition Height="9*"/>
@@ -80,7 +84,7 @@
                          Width="50"
                          VerticalAlignment="Center">
                     <Ellipse.Fill>
-                        <ImageBrush ImageSource="{Binding User.ProfilePhoto}"
+                        <ImageBrush ImageSource="{Binding ReceiverUser.ProfilePhoto}"
                                     Stretch="Fill"
                                     RenderOptions.BitmapScalingMode="HighQuality"></ImageBrush>
                     </Ellipse.Fill>
@@ -94,7 +98,7 @@
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="0"
-                               Text="{Binding User.Name}"
+                               Text="{Binding ReceiverUser.Name}"
                                VerticalAlignment="Bottom"
                                Margin="5, 0 , 0 ,0"
                                FontSize="17"
@@ -102,7 +106,7 @@
                                FontWeight="SemiBold"/>
 
                     <TextBlock Grid.Row="1"
-                               Text="{Binding User.About}"
+                               Text="{Binding ReceiverUser.About}"
                                VerticalAlignment="Top"
                                Margin="5, 0 , 0 ,0"
                                FontFamily="Comic Sans Serif"
@@ -112,7 +116,45 @@
             <ListBox Name="ListBoxChat"
                      Grid.Row="1"
                      Background="#E5E5FF"
-                     BorderThickness="0">
+                     BorderThickness="0"
+                     ScrollViewer.CanContentScroll="False">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListBoxItem}">
+                        <Setter Property="Focusable" Value="False"/>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+                <!--<Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0">
+                        <Ellipse
+                                 StrokeThickness="1"
+                                 Height="50"
+                                 Width="50"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Center">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="{Binding User.ProfilePhoto}"
+                                            Stretch="Fill"
+                                            RenderOptions.BitmapScalingMode="HighQuality"></ImageBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <TextBlock HorizontalAlignment="Center">12:47</TextBlock>
+                    </StackPanel>
+
+                    <Border Grid.Column="1"
+                            Background="#859FFE"
+                            BorderThickness="0"
+                            CornerRadius="15"
+                            Padding="10"
+                            Margin="10, 0">
+                        <TextBlock>Data</TextBlock>
+                    </Border>
+                </Grid>-->
+
             </ListBox>
 
             <Grid Grid.Row="2">
@@ -162,7 +204,7 @@
                                RenderOptions.BitmapScalingMode="Fant"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"
-                               MouseUp="ImageSend_OnMouseUp">
+                              MouseDown="ImageSend_OnMouseDown">
                         </Image>
                     </Grid>
                 </Border>
