@@ -33,16 +33,18 @@ namespace DesktopMessengerWPF
         public MainWindow()
         {
             this.DataContext = this;
+
+            var currentDirectoryPath = Directory.GetCurrentDirectory();
             ReceiverUser = new User()
             {
-                ProfilePhoto = @"C:\Users\elgun\source\repos\DesktopMessengerWPF\DesktopMessengerWPF\bin\Debug\images\elon-musk.png",
+                ProfilePhoto = $@"{currentDirectoryPath}\Images\elon-musk.png",
                 Name ="Elon Musk",
                 About = "Ideas about the weekend party!",
             };
 
             SenderUser = new User()
             {
-                ProfilePhoto = @"C:\Users\elgun\source\repos\DesktopMessengerWPF\DesktopMessengerWPF\bin\Debug\images\amber-heard.jpg",
+                ProfilePhoto = $@"{currentDirectoryPath}\Images\amber-heard.jpg",
                 Name = "Amber Heard",
                 About = "Ideas about the weekend party!",
             };

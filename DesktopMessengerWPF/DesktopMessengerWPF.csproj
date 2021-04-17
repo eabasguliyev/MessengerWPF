@@ -109,5 +109,9 @@
   <ItemGroup>
     <Resource Include="Images\close_window_50px.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\amber-heard.jpg" />
+    <Resource Include="Images\elon-musk.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
